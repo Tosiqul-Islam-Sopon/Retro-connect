@@ -22,8 +22,25 @@
         .inter {
             font-family: "Inter", sans-serif;
         }
-        .color-primery{
+
+        .color-primery {
             color: #7D7DFC;
+        }
+
+        .banner {
+            margin-top: 50px;
+            background: rgb(18, 19, 45) url("./images/bgbanner.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 16px;
+            padding: 90px 150px;
+        }
+
+        .grad {
+            background-image: linear-gradient(to bottom, rgb(121, 125, 252), rgba(121, 125, 252, 0));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
     </style>
 </head>
@@ -40,12 +57,15 @@
                                 d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
                     </div>
-                    <ul tabindex="0"
-                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 rounded-box w-52">
-                        <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mb-1" data-tip="Home"><img src="images/Vector.png" alt=""></li>
-                        <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mb-1" data-tip="Text Us"><img src="images/Vector (3).png" alt=""></li>
-                        <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mb-1" data-tip="Add With Us"><img src="images/Vector (1).png" alt=""></li>
-                        <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mb-1" data-tip="Flage"><img src="images/Vector (2).png" alt=""></li>
+                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 rounded-box w-52 bg-white">
+                        <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mb-1"
+                            data-tip="Home"><img src="images/Vector.png" alt=""></li>
+                        <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mb-1"
+                            data-tip="Text Us"><img src="images/Vector (3).png" alt=""></li>
+                        <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mb-1"
+                            data-tip="Add With Us"><img src="images/Vector (1).png" alt=""></li>
+                        <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mb-1"
+                            data-tip="Flage"><img src="images/Vector (2).png" alt=""></li>
                         <a class="btn bg-[#7D7DFC] rounded-3xl text-white font-bold text-xl">Sign Up</a>
                     </ul>
                 </div>
@@ -53,17 +73,53 @@
             </div>
             <div class="navbar-end hidden lg:flex">
                 <ul class="menu menu-horizontal px-1">
-                    <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mr-1" data-tip="Home"><img src="images/Vector.png" alt=""></li>
-                    <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mr-1" data-tip="Text Us"><img src="images/Vector (3).png" alt=""></li>
-                    <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mr-1" data-tip="Add With Us"><img src="images/Vector (1).png" alt=""></li>
-                    <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mr-1" data-tip="Flage"><img src="images/Vector (2).png" alt=""></li>
+                    <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mr-1" data-tip="Home">
+                        <img src="images/Vector.png" alt="">
+                    </li>
+                    <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mr-1" data-tip="Text Us">
+                        <img src="images/Vector (3).png" alt="">
+                    </li>
+                    <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mr-1"
+                        data-tip="Add With Us"><img src="images/Vector (1).png" alt=""></li>
+                    <li class="tooltip bg-[#12132D08] border-2 border-[#0307121A] rounded-full mr-1" data-tip="Flage">
+                        <img src="images/Vector (2).png" alt="">
+                    </li>
                 </ul>
                 <a class="btn bg-[#7D7DFC] rounded-3xl text-white font-bold text-xl">Sign Up</a>
             </div>
         </div>
     </header>
-    <main>
-
+    <main class="my-5 mx-10">
+        <section class="banner p-16 flex flex-col lg:flex-row gap-5 justify-between items-center mulish">
+            <div class="">
+                <h1 class="text-5xl font-black text-white">Welcome to the</h1>
+                <h1 class="text-5xl font-black mb-5 text-white"><span class="grad">ReTro</span> Forum</h1>
+                <p class="text-white">Share your favorite opinion and win and wp</p>
+                <p class="mb-5 text-white">forum coffee mug!</p>
+                <label class="input input-bordered flex justify-between rounded-2xl">
+                    <input type="text" class="grow " placeholder="Search here anything" />
+                    <button class="btn bg-[#7D7DFC] rounded-2xl px-8 text-white">Search</button>
+                </label>
+            </div>
+            <div class="bg-white rounded-2xl p-8 space-y-3">
+                <div class="flex justify-between space-x-5">
+                    <h5>Registered Users</h5>
+                    <h5>01</h5>
+                </div>
+                <div class="flex justify-between">
+                    <h5>Forum</h5>
+                    <h5>05</h5>
+                </div>
+                <div class="flex justify-between">
+                    <h5>Topics</h5>
+                    <h5>01</h5>
+                </div>
+                <div class="flex justify-between">
+                    <h5>Replies</h5>
+                    <h5>01</h5>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
 
