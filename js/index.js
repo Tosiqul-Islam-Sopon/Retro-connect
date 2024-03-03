@@ -70,7 +70,7 @@ const displayPosts = (posts) => {
                 </div>
             </div>
         `
-        div.classList.add("card", "bg-[#7D7DFC1A]", "flex", "flex-row", "border-2", "border-[#7D7DFC]", "rounded-3xl");
+        div.classList.add("card", "bg-[#7D7DFC1A]", "flex", "flex-col", "lg:flex-row", "border-2", "border-[#7D7DFC]", "rounded-3xl");
         container.appendChild(div);
     })
 }
