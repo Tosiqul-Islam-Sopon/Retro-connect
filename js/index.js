@@ -56,4 +56,44 @@ const displayPosts = (posts) =>{
     })
 }
 
+const fetchLatesPost = async() =>{
+    const response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/latest-posts`);
+    const data = await response.json();
+    displayLatestPosts(data);
+    // console.log(data);
+}
+
+const displayLatestPosts = (posts) =>{
+    const container = document.getElementById("latest_post_container");
+    for (const post of posts){
+        const div = document.createElement("div");
+        div.innerHTML = `
+            <figure><img class="rounded-xl"
+                src="${post.cover_image}" alt="" />
+            </figure>
+            <div class="">
+                <div class="flex items-center gap-2 my-4">
+                    <img src="images/date.png" alt="">
+                    <p class="text-[#12132D99]">${post.author.posted_date}</p>
+                </div>
+                <h2 class="text-xl font-extrabold">${post.title}</h2>
+                <p class="my-4">${post.description}</p>
+                <div class="flex items-center gap-5">
+                    <div class="avatar">
+                        <div class="w-16 rounded-full">
+                            <img src="${post.profile_image}" />
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold">${post.author.name}</h4>
+                        <p>${post.author.designation}</p>
+                    </div>
+                </div>
+            </div>
+        `
+        div.classList.add("card", "card-compact", "bg-base-100", "shadow-xl", "border", "border-[#12192D26]", "p-4");
+        container.appendChild(div);
+    }
+}
 fetchPosts();
+fetchLatesPost();
