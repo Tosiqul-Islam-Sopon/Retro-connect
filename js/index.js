@@ -67,6 +67,9 @@ const displayLatestPosts = (posts) =>{
     const container = document.getElementById("latest_post_container");
     for (const post of posts){
         const div = document.createElement("div");
+        let date = post.author.posted_date ? post.author.posted_date : "No Publish Date";
+        let authorDesignation = post.author.designation ? post.author.designation : "Unknown";
+
         div.innerHTML = `
             <figure><img class="rounded-xl"
                 src="${post.cover_image}" alt="" />
@@ -74,7 +77,7 @@ const displayLatestPosts = (posts) =>{
             <div class="">
                 <div class="flex items-center gap-2 my-4">
                     <img src="images/date.png" alt="">
-                    <p class="text-[#12132D99]">${post.author.posted_date}</p>
+                    <p class="text-[#12132D99]">${date}</p>
                 </div>
                 <h2 class="text-xl font-extrabold">${post.title}</h2>
                 <p class="my-4">${post.description}</p>
@@ -86,7 +89,7 @@ const displayLatestPosts = (posts) =>{
                     </div>
                     <div>
                         <h4 class="font-extrabold">${post.author.name}</h4>
-                        <p>${post.author.designation}</p>
+                        <p>${authorDesignation}</p>
                     </div>
                 </div>
             </div>
