@@ -120,6 +120,9 @@
                 </div>
             </div>
         </section>
+        <section id="spinner_container" class="hidden flex items-center justify-center">
+            <span id="spinner" class="loading loading-dots loading-lg"></span>
+        </section>
         <section class="discuss mulish">
             <div class="text-center">
                 <h2 class="text-4xl font-black">Let's Discuss</h2>
@@ -178,31 +181,34 @@
                         </div>
                     </div> -->
                 </div>
-                <div id="mark_as_read_container" class="bg-[#12132D0D] rounded-3xl space-y-4 p-5">
+                <div class="bg-[#12132D0D] rounded-3xl space-y-4 p-5 h-fit">
                     <div class="flex justify-between">
                         <h4 class="text-xl font-bold">Title</h4>
                         <div class="flex items-center gap-2">
                             <div>
                                 <img src="images/right1.png" alt="">
                             </div>
-                            <p>Mark as read(<span>2</span>)</p>
+                            <p>Mark as read(<span id="read_count">0</span>)</p>
                         </div>
                     </div>
-                    <div class="bg-white flex justify-between items-center p-5 rounded-2xl">
-                        <p class="font-semibold">10 Kids Unaware of Their Halloween Costume</p>
-                        <div class="flex gap-2 p-5">
-                            <img src="images/eye.png" alt="">
-                            <p>500</p>
+                    <div id="mark_as_read_container" class="space-y-4">
+                        <!-- <div class="bg-white flex justify-between items-center p-5 rounded-2xl">
+                            <p class="font-semibold">10 Kids Unaware of Their Halloween Costume</p>
+                            <div class="flex gap-2 p-5">
+                                <img src="images/eye.png" alt="">
+                                <p>500</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="bg-white flex justify-between items-center p-5 rounded-2xl">
-                        <p class="font-semibold">10 Kids Unaware of Their Halloween Costume</p>
-                        <div class="flex gap-2 p-5">
-                            <img src="images/eye.png" alt="">
-                            <p>500</p>
-                        </div>
+                        <div class="bg-white flex justify-between items-center p-5 rounded-2xl">
+                            <p class="font-semibold">10 Kids Unaware of Their Halloween Costume</p>
+                            <div class="flex gap-2 p-5">
+                                <img src="images/eye.png" alt="">
+                                <p>500</p>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
+
             </div>
         </section>
         <section class="forum mulish bg-[#12132D] p-14 rounded-3xl flex flex-col lg:flex-row gap-10 justify-between">

@@ -1,29 +1,37 @@
-const fetchPosts = async(input, searchStatus) =>{
+const allPost = [];
+let cnt = 0;
+const fetchPosts = async (input, searchStatus) => {
+    document.getElementById("spinner_container").classList.remove("hidden");
+    
     let response;
-    if(searchStatus)    response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${input}`);
-    else    response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+    if (searchStatus) response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${input}`);
+    else response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
     const data = await response.json();
     const posts = data.posts;
-    // console.log(data.posts);
+
+    setTimeout(function() {
+        document.getElementById("spinner_container").classList.add("hidden");
+      }, 2000);
     displayPosts(posts);
 }
 
-const displayPosts = (posts) =>{
+const displayPosts = (posts) => {
     const container = document.getElementById("post_container");
     container.textContent = '';
-    if (!posts.length){
+    if (!posts.length) {
         document.getElementById("error-message").classList.remove("hidden");
         document.getElementById("mark_as_read_container").classList.add("hidden");
     }
-    else{
+    else {
         document.getElementById("error-message").classList.add("hidden");
         document.getElementById("mark_as_read_container").classList.remove("hidden");
     }
-    posts.forEach(post =>{
+    posts.forEach(post => {
+        allPost.push(post);
         const div = document.createElement("div");
         let activStatus;
-        if (post.isActive)  activStatus = "green";
-        else    activStatus = "red";
+        if (post.isActive) activStatus = "green";
+        else activStatus = "red";
         div.innerHTML = `
             <div class="indicator p-1 mt-8 ml-5">
                 <span class="indicator-item badge bg-${activStatus}-600"></span>
@@ -56,8 +64,8 @@ const displayPosts = (posts) =>{
                             <p>${post.posted_time} min</p>
                         </div>
                     </div>
-                    <div class="">
-                        <img src="images/mail.png" alt="">
+                    <div class="tooltip" data-tip="Mark as read">
+                        <img id="mark_as_read_btn" onclick="displayMarkAsRead(${post.id})"  class="cursor-pointer" src="images/mail.png" alt="">
                     </div>
                 </div>
             </div>
@@ -67,16 +75,16 @@ const displayPosts = (posts) =>{
     })
 }
 
-const fetchLatesPost = async() =>{
+const fetchLatesPost = async () => {
     const response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/latest-posts`);
     const data = await response.json();
     displayLatestPosts(data);
     // console.log(data);
 }
 
-const displayLatestPosts = (posts) =>{
+const displayLatestPosts = (posts) => {
     const container = document.getElementById("latest_post_container");
-    for (const post of posts){
+    for (const post of posts) {
         const div = document.createElement("div");
         let date = post.author.posted_date ? post.author.posted_date : "No Publish Date";
         let authorDesignation = post.author.designation ? post.author.designation : "Unknown";
@@ -110,9 +118,30 @@ const displayLatestPosts = (posts) =>{
     }
 }
 
-const search = () =>{
+const search = () => {
     const input = document.getElementById("search").value;
-    fetchPosts(input,true);
+    fetchPosts(input, true);
+}
+
+const displayMarkAsRead = (id) => {
+    cnt++;
+    document.getElementById("read_count").innerText = cnt;
+    const container = document.getElementById("mark_as_read_container");
+    for (let i = 0; i < allPost.length; i++) {
+        if (allPost[i].id === id){
+            const div = document.createElement("div");
+            div.innerHTML = `
+                <p class="font-semibold">${allPost[i].title}</p>
+                <div class="flex gap-2 p-5">
+                    <img src="images/eye.png" alt="">
+                    <p>${allPost[i].view_count}</p>
+                </div>
+            `
+            div.classList.add("bg-white", "flex", "justify-between", "items-center", "p-5", "rounded-2xl");
+            container.appendChild(div);
+            break;
+        }
+    }
 }
 
 fetchPosts();
