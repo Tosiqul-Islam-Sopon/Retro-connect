@@ -1,5 +1,7 @@
-const fetchPosts = async() =>{
-    const response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+const fetchPosts = async(input, searchStatus) =>{
+    let response;
+    if(searchStatus)    response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${input}`);
+    else    response = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
     const data = await response.json();
     const posts = data.posts;
     // console.log(data.posts);
@@ -8,6 +10,15 @@ const fetchPosts = async() =>{
 
 const displayPosts = (posts) =>{
     const container = document.getElementById("post_container");
+    container.textContent = '';
+    if (!posts.length){
+        document.getElementById("error-message").classList.remove("hidden");
+        document.getElementById("mark_as_read_container").classList.add("hidden");
+    }
+    else{
+        document.getElementById("error-message").classList.add("hidden");
+        document.getElementById("mark_as_read_container").classList.remove("hidden");
+    }
     posts.forEach(post =>{
         const div = document.createElement("div");
         let activStatus;
@@ -98,5 +109,11 @@ const displayLatestPosts = (posts) =>{
         container.appendChild(div);
     }
 }
+
+const search = () =>{
+    const input = document.getElementById("search").value;
+    fetchPosts(input,true);
+}
+
 fetchPosts();
 fetchLatesPost();

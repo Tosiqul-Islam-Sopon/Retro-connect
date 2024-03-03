@@ -97,8 +97,8 @@
                 <p class="text-white">Share your favorite opinion and win and wp</p>
                 <p class="mb-5 text-white">forum coffee mug!</p>
                 <label class="input input-bordered flex justify-between rounded-2xl">
-                    <input type="text" class="grow " placeholder="Search here anything" />
-                    <button class="btn bg-[#7D7DFC] rounded-2xl px-8 text-white">Search</button>
+                    <input id="search" type="text" class="grow " placeholder="Search here anything" />
+                    <button onclick="search()" class="btn bg-[#7D7DFC] rounded-2xl px-8 text-white">Search</button>
                 </label>
             </div>
             <div class="bg-white rounded-2xl p-8 space-y-3">
@@ -127,6 +127,16 @@
                 <p class="mb-5">The integrated testing features allow for a streamlined.</p>
             </div>
             <div class="flex gap-3 flex-col lg:flex-row">
+                <div id="error-message" class="mx-auto hidden">
+                    <div role="alert" class="alert alert-error">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>No Post Found</span>
+                    </div>
+                </div>
                 <div id="post_container" class="space-y-5">
                     <!-- <div class="card bg-[#7D7DFC1A] flex flex-row border-2 border-[#7D7DFC] rounded-3xl">
                         <div class="indicator p-1 mt-8 ml-5">
@@ -168,7 +178,7 @@
                         </div>
                     </div> -->
                 </div>
-                <div class="bg-[#12132D0D] rounded-3xl space-y-4 p-5">
+                <div id="mark_as_read_container" class="bg-[#12132D0D] rounded-3xl space-y-4 p-5">
                     <div class="flex justify-between">
                         <h4 class="text-xl font-bold">Title</h4>
                         <div class="flex items-center gap-2">
